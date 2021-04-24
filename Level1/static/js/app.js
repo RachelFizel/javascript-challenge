@@ -15,17 +15,15 @@ data.forEach((ufoSighting) => {
 
 
 //handle click event
-var button = d3.select('#filter-btn')
-var inputDate = d3.select('#datetime')
-var inputCity = d3.select('#city')
+var button = d3.select('#filter-btn');
+var inputDate = d3.select('#datetime');
 
-var form = d3.select("form")
+var form = d3.select("form");
 
 button.on("click", updateResults);
 form.on("submit", updateResults);
 
 
-//seperate function create table like 42-51
 
 function updateResults(){  
      
@@ -34,12 +32,9 @@ function updateResults(){
      console.log("change"); 
      
      var newDate = inputDate.property("value");
-     var newCity = inputCity.property("value");
-     console.log(newCity);
-     console.log(newDate);
 
-     var filteredData = data.filter(ufoData => ufoData.datetime === newDate &&
-                                               ufoData.city === newCity);
+     
+     var filteredData = data.filter(ufoData => ufoData.datetime === newDate);
      console.log(filteredData);
 
      var tbody = d3.select("tbody");
@@ -49,7 +44,7 @@ function updateResults(){
 };
 
 function displayResults(filteredData){
-     console.log("made it into displayResults")
+     
      tbody.html("");
 
      filteredData.forEach((filteredData) => {
